@@ -8,8 +8,7 @@ public class ex3 {
 
         System.out.print("Digite o percentual de reajuste: ");
         float reajuste = sc.nextFloat();
-        reajuste = atual + ((atual*reajuste)/100);
-        System.out.println("salario apos reajuste: "+ reajuste);
+        System.out.println("salario apos reajuste: "+ (atual + ((atual*reajuste)/100)));
 
 
     }
