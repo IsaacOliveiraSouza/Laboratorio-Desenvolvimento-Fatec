@@ -232,3 +232,63 @@ public class ex8 {
 | 25              | Verdadeiro            | "Positivo" |
 | -12             | Falso                 | "Negativo" |
 
+###Ex9:
+```java
+import java.util.Scanner;
+public class ex9 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o numero de maças compradas: ");
+        int numero = sc.nextInt();
+        
+        if(numero<12){
+            System.out.println("preço: " + (numero*1.30));
+        }else{
+            System.out.println("preço: " + numero);
+        }
+    }
+}
+```
+
+### **Teste de Mesa**
+
+| Entrada (Número de maçãs) | Condição `numero < 12` | Cálculo | Saída      |
+|--------------------------|----------------------|------------------|------------|
+| 10                       | Verdadeiro          | 10 * 1.30 = 13.00 | "preço: 13.0" |
+| 5                        | Verdadeiro          | 5 * 1.30 = 6.50   | "preço: 6.5" |
+| 12                       | Falso               | 12 (preço unitário de 1 real) | "preço: 12" |
+| 20                       | Falso               | 20 (preço unitário de 1 real) | "preço: 20" |
+| 8                        | Verdadeiro          | 8 * 1.30 = 10.40  | "preço: 10.4" |
+
+
+###Ex10:
+```java
+import java.util.Scanner;
+public class ex10 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite a nota da a1: ");
+        Float nota1 = sc.nextFloat();
+
+        System.out.print("Digite a nota da a2: ");
+        Float nota2 = sc.nextFloat();
+        
+        if(((nota1+nota2)/2)>=6){
+            System.out.println("Passou com media: "+(nota1+nota2)/2);
+        }else{
+            System.out.println("Reprovou com media: "+ (nota1+nota2)/2);
+        }
+    }
+}
+```
+### **Teste de Mesa**
+
+| Entrada (Nota A1) | Entrada (Nota A2) | Cálculo `((nota1 + nota2) / 2)` | Condição `média >= 6` | Saída |
+|------------------|------------------|------------------------------|--------------------|----------------------------|
+| 7.0             | 8.0              | (7.0 + 8.0) / 2 = 7.5        | Verdadeiro        | "Passou com media: 7.5" |
+| 5.0             | 6.0              | (5.0 + 6.0) / 2 = 5.5        | Falso             | "Reprovou com media: 5.5" |
+| 10.0            | 4.0              | (10.0 + 4.0) / 2 = 7.0       | Verdadeiro        | "Passou com media: 7.0" |
+| 3.0             | 5.0              | (3.0 + 5.0) / 2 = 4.0        | Falso             | "Reprovou com media: 4.0" |
+| 6.0             | 6.0              | (6.0 + 6.0) / 2 = 6.0        | Verdadeiro        | "Passou com media: 6.0" |
