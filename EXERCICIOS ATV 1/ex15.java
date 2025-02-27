@@ -28,7 +28,5 @@ public class ex15 {
 
         // Exibir resultado
         System.out.println("Salário total: R$ " + salarioTotal);
-
-        sc.close();
     }
 }
