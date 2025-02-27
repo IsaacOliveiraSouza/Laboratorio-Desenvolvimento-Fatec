@@ -416,3 +416,119 @@ public class ex14 {
 | 18                     | 18                   | Falso                | `18 - 18 = 0`                 | 0 horas (mesmo horário)  |
 | 23                     | 1                    | Verdadeiro           | `24 - (23 - 1) = 2`           | 2 horas                 |
 | 6                      | 12                   | Falso                | `12 - 6 = 6`                  | 6 horas                 |
+
+###Ex15:
+```java
+import java.util.Scanner;
+
+public class ex15 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        // Entrada de dados
+        System.out.print("Digite o número de horas trabalhadas no mês: ");
+        int horasTrabalhadas = sc.nextInt();
+
+        System.out.print("Digite o salário por hora: ");
+        float salarioHora = sc.nextFloat();
+
+        // Definições
+        int horasSemanais = 40;
+        int semanasNoMes = 4;
+        int horasMensais = horasSemanais * semanasNoMes;
+        float salarioTotal;
+
+        // Cálculo do salário total
+        if (horasTrabalhadas > horasMensais) {
+            int horasExtras = horasTrabalhadas - horasMensais;
+            float valorHoraExtra = salarioHora * 1.5f;
+            salarioTotal = (horasMensais * salarioHora) + (horasExtras * valorHoraExtra);
+        } else {
+            salarioTotal = horasTrabalhadas * salarioHora;
+        }
+
+        // Exibir resultado
+        System.out.println("Salário total: R$ " + salarioTotal);
+
+        sc.close();
+    }
+}
+```
+| Entrada (Horas Trabalhadas) | Entrada (Salário por Hora) | Horas Extras | Cálculo do Salário | Saída (Salário Total) |
+|----------------------------|-------------------------|-------------|--------------------|---------------------|
+| 160                        | 20.0                    | 0           | `160 * 20.0`       | R$ 3200.00         |
+| 170                        | 15.0                    | 10          | `(160 * 15.0) + (10 * (15.0 * 1.5))` | R$ 2475.00 |
+| 180                        | 25.0                    | 20          | `(160 * 25.0) + (20 * (25.0 * 1.5))` | R$ 4750.00 |
+| 140                        | 18.0                    | 0           | `140 * 18.0`       | R$ 2520.00         |
+| 200                        | 30.0                    | 40          | `(160 * 30.0) + (40 * (30.0 * 1.5))` | R$ 6900.00 |
+
+###Ex16:
+```java
+public class ex16 {
+    public static void main(String[] args) {
+        // Definição dos gastos mensais
+        float janeiro = 15000.0f;
+        float fevereiro = 23000.0f;
+        float março = 17000.0f;
+
+        // Cálculo do gasto total no trimestre e da média mensal
+        float gastoTotal = janeiro + fevereiro + março;
+        float mediaMensal = gastoTotal / 3;
+
+        // Exibição dos resultados
+        System.out.println("Gasto total no trimestre: R$ " + gastoTotal);
+        System.out.println("Média mensal de gastos: R$ " + mediaMensal);
+    }
+}
+
+```
+| Entrada (Gastos Janeiro) | Entrada (Gastos Fevereiro) | Entrada (Gastos Março) | Cálculo do Gasto Total | Cálculo da Média Mensal | Saída |
+|-------------------------|-------------------------|----------------------|----------------------|----------------------|-------------------------------|
+| 15000.0                | 23000.0                | 17000.0             | `15000 + 23000 + 17000 = 55000` | `55000 / 3 = 18333.33` | "Gasto total no trimestre: R$ 55000.0" <br> "Média mensal de gastos: R$ 18333.33" |
+
+###Ex17:
+```java
+import java.util.Scanner;
+
+public class ex17 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Entrada das notas
+        System.out.print("Digite a nota da P1: ");
+        float P1 = sc.nextFloat();
+
+        System.out.print("Digite a nota da E1: ");
+        float E1 = sc.nextFloat();
+
+        System.out.print("Digite a nota da E2: ");
+        float E2 = sc.nextFloat();
+
+        System.out.print("Digite a nota da API: ");
+        float API = sc.nextFloat();
+
+        System.out.print("Digite a nota da SUB: ");
+        float SUB = sc.nextFloat();
+
+        System.out.print("Digite o valor de X (se houver, senão digite 0): ");
+        float X = sc.nextFloat();
+
+        // Cálculo da média
+        float mediaParcial = (P1 * 0.6f + ((E1 + E2) / 2) * 0.4f);
+        float ajusteAPI = Math.max((mediaParcial - 5.9f), 0) / (mediaParcial - 5.9f) * (API * 0.5f);
+        float mediaFinal = (mediaParcial * 0.5f) + ajusteAPI + X + (SUB * 0.3f);
+
+        // Exibição do resultado
+        System.out.println("Média final de LP1: " + mediaFinal);
+
+        sc.close();
+    }
+}
+
+```
+
+| Entrada (P1) | Entrada (E1) | Entrada (E2) | Entrada (API) | Entrada (SUB) | Entrada (X) | Cálculo da Média Parcial | Cálculo Ajuste API | Cálculo Média Final | Saída |
+|-------------|-------------|-------------|-------------|-------------|-------------|------------------------|----------------|----------------|---------------------|
+| 7.0         | 6.0         | 8.0         | 5.0         | 6.5         | 1.0         | `(7.0 * 0.6) + ((6.0 + 8.0) / 2 * 0.4) = 6.8` | `max((6.8 - 5.9), 0) / (6.8 - 5.9) * (5.0 * 0.5) = 2.5` | `(6.8 * 0.5) + 2.5 + 1.0 + (6.5 * 0.3) = 8.65` | "Média final de LP1: 8.65" |
+| 5.0         | 4.5         | 6.0         | 7.0         | 5.0         | 0.5         | `(5.0 * 0.6) + ((4.5 + 6.0) / 2 * 0.4) = 5.1` | `max((5.1 - 5.9), 0) / (5.1 - 5.9) * (7.0 * 0.5) = 0` | `(5.1 * 0.5) + 0 + 0.5 + (5.0 * 0.3) = 4.05` | "Média final de LP1: 4.05" |
+| 8.0         | 9.0         | 7.5         | 8.0         | 7.0         | 2.0         | `(8.0 * 0.6) + ((9.0 + 7.5) / 2 * 0.4) = 8.0` | `max((8.0 - 5.9), 0) / (8.0 - 5.9) * (8.0 * 0.5) = 4.0` | `(8.0 * 0.5) + 4.0 + 2.0 + (7.0 * 0.3) = 11.1` | "Média final de LP1: 11.1" |
