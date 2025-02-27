@@ -292,3 +292,127 @@ public class ex10 {
 | 10.0            | 4.0              | (10.0 + 4.0) / 2 = 7.0       | Verdadeiro        | "Passou com media: 7.0" |
 | 3.0             | 5.0              | (3.0 + 5.0) / 2 = 4.0        | Falso             | "Reprovou com media: 4.0" |
 | 6.0             | 6.0              | (6.0 + 6.0) / 2 = 6.0        | Verdadeiro        | "Passou com media: 6.0" |
+
+####Ex11:
+```java
+import java.util.Scanner;
+public class ex11 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o ano atual: ");
+        int atual = sc.nextInt();
+
+        System.out.print("Digite o ano de seu nascimento: ");
+        int nascimento = sc.nextInt();
+        
+        if(atual-nascimento>=16){
+            System.out.println("Pode votar");
+        }else{
+            System.out.println("Não pode votar");
+        }
+    }
+}
+```
+### **Teste de Mesa**
+
+| Entrada (Ano Atual) | Entrada (Ano de Nascimento) | Cálculo `atual - nascimento` | Condição `>= 16` | Saída             |
+|--------------------|--------------------------|------------------------------|------------------|-------------------|
+| 2025             | 2005                      | 2025 - 2005 = 20            | Verdadeiro      | "Pode votar"     |
+| 2024             | 2010                      | 2024 - 2010 = 14            | Falso           | "Não pode votar" |
+| 2023             | 2008                      | 2023 - 2008 = 15            | Falso           | "Não pode votar" |
+| 2022             | 2006                      | 2022 - 2006 = 16            | Verdadeiro      | "Pode votar"     |
+| 2030             | 2015                      | 2030 - 2015 = 15            | Falso           | "Não pode votar" |
+
+###Ex12:
+```java
+import java.util.Scanner;
+public class ex12 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite um numero: ");
+        Float num1 = sc.nextFloat();
+
+        System.out.print("Digite outro numero: ");
+        Float num2 = sc.nextFloat();
+        
+        if(num1>num2){
+            System.out.println("O primeiro é maior");
+        }else{
+            System.out.println("O segundo é maior é maior");
+        }
+    }
+}
+```
+### **Teste de Mesa**
+
+| Entrada (Número 1) | Entrada (Número 2) | Condição `num1 > num2` | Saída                    |
+|------------------|------------------|----------------------|--------------------------|
+| 10.5            | 8.2              | Verdadeiro          | "O primeiro é maior"    |
+| 7.0             | 15.3             | Falso               | "O segundo é maior é maior" |
+| 12.0            | 12.0             | Falso               | "O segundo é maior é maior" |
+| 25.6            | 10.1             | Verdadeiro          | "O primeiro é maior"    |
+| -5.0            | -10.0            | Verdadeiro          | "O primeiro é maior"    |
+
+###Ex13:
+```java
+import java.util.Scanner;
+public class ex13 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite um numero: ");
+        Float num1 = sc.nextFloat();
+
+        System.out.print("Digite outro numero: ");
+        Float num2 = sc.nextFloat();
+        
+        if(num1>num2){
+            System.out.println(num2+", "+num1);
+        }else{
+            System.out.println(num1+", "+num2);
+        }
+    }
+}
+```
+### **Teste de Mesa**
+
+| Entrada (Número 1) | Entrada (Número 2) | Condição `num1 > num2` | Saída Ordenada |
+|------------------|------------------|----------------------|----------------|
+| 10.5            | 8.2              | Verdadeiro          | "8.2, 10.5"    |
+| 7.0             | 15.3             | Falso               | "7.0, 15.3"    |
+| 12.0            | 12.0             | Falso               | "12.0, 12.0"   |
+| 25.6            | 10.1             | Verdadeiro          | "10.1, 25.6"   |
+| -5.0            | -10.0            | Verdadeiro          | "-10.0, -5.0"  |
+
+###Ex14:
+```java
+import java.util.Scanner;
+public class ex14 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("hora de inicio: ");
+        int inicio = sc.nextInt();
+
+        System.out.print("hora de termino: ");
+        int fim = sc.nextInt();
+        
+        if(fim<inicio){
+            System.out.println(24-(inicio-fim));
+        }else{
+            System.out.println((fim-inicio));
+        }
+    }
+}
+```
+### **Teste de Mesa**
+
+| Entrada (Hora de Início) | Entrada (Hora de Término) | Condição `fim < inicio` | Cálculo                         | Saída (Duração do Jogo) |
+|------------------------|----------------------|----------------------|--------------------------------|-------------------------|
+| 10                     | 15                   | Falso                | `15 - 10 = 5`                 | 5 horas                 |
+| 22                     | 4                    | Verdadeiro           | `24 - (22 - 4) = 6`           | 6 horas                 |
+| 18                     | 18                   | Falso                | `18 - 18 = 0`                 | 0 horas (mesmo horário)  |
+| 23                     | 1                    | Verdadeiro           | `24 - (23 - 1) = 2`           | 2 horas                 |
+| 6                      | 12                   | Falso                | `12 - 6 = 6`                  | 6 horas                 |
