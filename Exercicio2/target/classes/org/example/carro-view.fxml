@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.CarroController">
+    <Label text="Criar Carro" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Label text="Marca:" />
+        <TextField fx:id="marcaField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Modelo:" />
+        <TextField fx:id="modeloField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Ano de Fabricação:" />
+        <TextField fx:id="anoField" />
+    </HBox>
+
+    <Button text="Criar Carro" onAction="#criarCarro" fx:id="criarButton" />
+    <Button text="Ligar Carro" onAction="#ligarCarro" />
+    <Button text="Desligar Carro" onAction="#desligarCarro" />
+
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>

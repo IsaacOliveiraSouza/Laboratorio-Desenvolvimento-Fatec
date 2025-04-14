@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AnimalController">
+    <Label text="Criar Animal" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Idade:" />
+        <TextField fx:id="idadeField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Espécie:" />
+        <TextField fx:id="especieField" />
+    </HBox>
+
+    <Button text="Criar Animal" onAction="#criarAnimal" fx:id="criarButton" />
+    <Button text="Emitir Som" onAction="#emitirSomAnimal" />
+
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>
