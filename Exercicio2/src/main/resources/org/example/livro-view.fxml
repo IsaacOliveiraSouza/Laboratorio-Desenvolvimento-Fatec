@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LivroController">
+    <!-- Título -->
+    <Label text="Criar Livro" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Campo Título -->
+    <HBox spacing="10">
+        <Label text="Título:" />
+        <TextField fx:id="tituloField" />
+    </HBox>
+
+    <!-- Campo Autor -->
+    <HBox spacing="10">
+        <Label text="Autor:" />
+        <TextField fx:id="autorField" />
+    </HBox>
+
+    <!-- Campo Número de Páginas -->
+    <HBox spacing="10">
+        <Label text="Número de Páginas:" />
+        <TextField fx:id="paginasField" />
+    </HBox>
+
+    <!-- Botões -->
+    <Button text="Criar Livro" onAction="#criarLivro" fx:id="criarButton" />
+    <Button text="Exibir Detalhes" onAction="#exibirDetalhesLivro" />
+
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>

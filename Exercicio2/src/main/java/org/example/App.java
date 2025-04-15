@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Carregar o arquivo FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/carro-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/funcionario-view.fxml"));
         Scene scene = new Scene(loader.load(), 400, 300);
 
         // Configurar a cena

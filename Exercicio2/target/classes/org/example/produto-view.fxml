@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProdutoController">
+    <!-- Título -->
+    <Label text="Criar Produto" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Campo Nome -->
+    <HBox spacing="10">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" />
+    </HBox>
+
+    <!-- Campo Preço -->
+    <HBox spacing="10">
+        <Label text="Preço:" />
+        <TextField fx:id="precoField" />
+    </HBox>
+
+    <!-- Campo Estoque -->
+    <HBox spacing="10">
+        <Label text="Estoque:" />
+        <TextField fx:id="estoqueField" />
+    </HBox>
+
+    <!-- Campo Quantidade de Compra -->
+    <HBox spacing="10">
+        <Label text="Quantidade para Comprar:" />
+        <TextField fx:id="quantidadeCompraField" />
+    </HBox>
+
+    <!-- Botões -->
+    <Button text="Criar Produto" onAction="#criarProduto" fx:id="criarButton" />
+    <Button text="Comprar Produto" onAction="#comprarProduto" fx:id="comprarButton" />
+
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>

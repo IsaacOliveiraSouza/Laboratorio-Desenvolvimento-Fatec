@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.JogoController">
+    <!-- Título -->
+    <Label text="Criar Jogo" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Campo Nome -->
+    <HBox spacing="10">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" />
+    </HBox>
+
+    <!-- Campo Gênero -->
+    <HBox spacing="10">
+        <Label text="Gênero:" />
+        <TextField fx:id="generoField" />
+    </HBox>
+
+    <!-- Checkbox Multiplayer -->
+    <HBox spacing="10">
+        <Label text="Multiplayer:" />
+        <CheckBox fx:id="multiplayerCheckBox" />
+    </HBox>
+
+    <!-- Botões -->
+    <Button text="Criar Jogo" onAction="#criarJogo" fx:id="criarButton" />
+    <Button text="Iniciar Jogo" onAction="#iniciarJogo" />
+
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>

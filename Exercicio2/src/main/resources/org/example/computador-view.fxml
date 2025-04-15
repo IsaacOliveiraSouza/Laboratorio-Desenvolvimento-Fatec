@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ComputadorController">
+    <!-- Título -->
+    <Label text="Criar Computador" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Campo Marca -->
+    <HBox spacing="10">
+        <Label text="Marca:" />
+        <TextField fx:id="marcaField" />
+    </HBox>
+
+    <!-- Campo Modelo -->
+    <HBox spacing="10">
+        <Label text="Modelo:" />
+        <TextField fx:id="modeloField" />
+    </HBox>
+
+    <!-- Campo Memória RAM -->
+    <HBox spacing="10">
+        <Label text="Memória RAM (GB):" />
+        <TextField fx:id="ramField" />
+    </HBox>
+
+    <!-- Botões -->
+    <Button text="Criar Computador" onAction="#criarComputador" fx:id="criarButton" />
+    <Button text="Ligar Computador" onAction="#ligarComputador" />
+    <Button text="Desligar Computador" onAction="#desligarComputador" />
+
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>
