@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PessoaController">
+    <Label text="Criar Pessoa" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Idade:" />
+        <TextField fx:id="idadeField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Profissão:" />
+        <TextField fx:id="profissaoField" />
+    </HBox>
+
+    <Button text="Criar Pessoa" onAction="#criarPessoa" fx:id="criarButton" />
+    <Button text="Apresentar Pessoa" onAction="#apresentarPessoa" />
+
+    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+</VBox>
