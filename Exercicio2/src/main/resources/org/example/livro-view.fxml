@@ -2,32 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LivroController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LivroController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Livro" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Livro 📚" styleClass="title-label" />
 
     <!-- Campo Título -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Título:" />
-        <TextField fx:id="tituloField" />
+        <TextField fx:id="tituloField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Autor -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Autor:" />
-        <TextField fx:id="autorField" />
+        <TextField fx:id="autorField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Número de Páginas -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Número de Páginas:" />
-        <TextField fx:id="paginasField" />
+        <TextField fx:id="paginasField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Livro" onAction="#criarLivro" fx:id="criarButton" />
-    <Button text="Exibir Detalhes" onAction="#exibirDetalhesLivro" />
+    <HBox spacing="10">
+        <Button text="Criar Livro" onAction="#criarLivro" styleClass="button" />
+        <Button text="Exibir Detalhes" onAction="#exibirDetalhesLivro" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

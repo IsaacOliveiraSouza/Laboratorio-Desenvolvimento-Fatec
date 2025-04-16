@@ -2,33 +2,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ComputadorController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ComputadorController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Computador" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Computador 💻" styleClass="title-label" />
 
     <!-- Campo Marca -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Marca:" />
-        <TextField fx:id="marcaField" />
+        <TextField fx:id="marcaField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Modelo -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Modelo:" />
-        <TextField fx:id="modeloField" />
+        <TextField fx:id="modeloField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Memória RAM -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Memória RAM (GB):" />
-        <TextField fx:id="ramField" />
+        <TextField fx:id="ramField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Computador" onAction="#criarComputador" fx:id="criarButton" />
-    <Button text="Ligar Computador" onAction="#ligarComputador" />
-    <Button text="Desligar Computador" onAction="#desligarComputador" />
+    <HBox spacing="10">
+        <Button text="Criar Computador" onAction="#criarComputador" styleClass="button" />
+        <Button text="Ligar Computador" onAction="#ligarComputador" styleClass="button" />
+        <Button text="Desligar Computador" onAction="#desligarComputador" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

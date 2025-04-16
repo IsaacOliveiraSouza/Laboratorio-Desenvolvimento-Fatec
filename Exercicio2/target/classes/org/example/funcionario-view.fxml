@@ -2,38 +2,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.FuncionarioController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.FuncionarioController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Funcionário" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Funcionário 💼" styleClass="title-label" />
 
     <!-- Campo Nome -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Cargo -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Cargo:" />
-        <TextField fx:id="cargoField" />
+        <TextField fx:id="cargoField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Salário -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Salário:" />
-        <TextField fx:id="salarioField" />
+        <TextField fx:id="salarioField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Percentual de Aumento -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Percentual de Aumento (%):" />
-        <TextField fx:id="aumentoField" />
+        <TextField fx:id="aumentoField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Funcionário" onAction="#criarFuncionario" fx:id="criarButton" />
-    <Button text="Dar Aumento" onAction="#darAumento" />
+    <HBox spacing="10">
+        <Button text="Criar Funcionário" onAction="#criarFuncionario" styleClass="button" />
+        <Button text="Dar Aumento" onAction="#darAumento" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

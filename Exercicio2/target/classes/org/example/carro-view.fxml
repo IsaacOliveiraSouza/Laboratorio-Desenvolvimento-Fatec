@@ -2,27 +2,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.CarroController">
-    <Label text="Criar Carro" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.CarroController" stylesheets="@styles.css">
+    <!-- Título -->
+    <Label text="Criar Carro 🚗" styleClass="title-label" />
 
-    <HBox spacing="10">
+    <!-- Campo Marca -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Marca:" />
-        <TextField fx:id="marcaField" />
+        <TextField fx:id="marcaField" styleClass="text-field" />
     </HBox>
 
-    <HBox spacing="10">
+    <!-- Campo Modelo -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Modelo:" />
-        <TextField fx:id="modeloField" />
+        <TextField fx:id="modeloField" styleClass="text-field" />
     </HBox>
 
+    <!-- Campo Ano -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Ano:" />
+        <TextField fx:id="anoField" styleClass="text-field" />
+    </HBox>
+
+    <!-- Botões -->
     <HBox spacing="10">
-        <Label text="Ano de Fabricação:" />
-        <TextField fx:id="anoField" />
+        <Button text="Criar Carro" onAction="#criarCarro" styleClass="button" />
+        <Button text="Ligar Carro" onAction="#ligarCarro" styleClass="button" />
+        <Button text="Desligar Carro" onAction="#desligarCarro" styleClass="button" />
     </HBox>
 
-    <Button text="Criar Carro" onAction="#criarCarro" fx:id="criarButton" />
-    <Button text="Ligar Carro" onAction="#ligarCarro" />
-    <Button text="Desligar Carro" onAction="#desligarCarro" />
-
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

@@ -2,26 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AnimalController">
-    <Label text="Criar Animal" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AnimalController" stylesheets="@styles.css">
+    <!-- Título -->
+    <Label text="Criar Animal 🐕" styleClass="title-label" />
 
-    <HBox spacing="10">
+    <!-- Campo Nome -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
-    <HBox spacing="10">
+    <!-- Campo Idade -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Idade:" />
-        <TextField fx:id="idadeField" />
+        <TextField fx:id="idadeField" styleClass="text-field" />
     </HBox>
 
-    <HBox spacing="10">
+    <!-- Campo Espécie -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Espécie:" />
-        <TextField fx:id="especieField" />
+        <TextField fx:id="especieField" styleClass="text-field" />
     </HBox>
 
-    <Button text="Criar Animal" onAction="#criarAnimal" fx:id="criarButton" />
-    <Button text="Emitir Som" onAction="#emitirSomAnimal" />
+    <!-- Botões -->
+    <HBox spacing="10">
+        <Button text="Criar Animal" onAction="#criarAnimal" styleClass="button" />
+        <Button text="Emitir Som" onAction="#emitirSomAnimal" styleClass="button" />
+    </HBox>
 
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

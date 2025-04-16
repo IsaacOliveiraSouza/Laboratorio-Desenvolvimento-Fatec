@@ -2,38 +2,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProdutoController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProdutoController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Produto" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Produto 📦" styleClass="title-label" />
 
     <!-- Campo Nome -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Preço -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Preço:" />
-        <TextField fx:id="precoField" />
+        <TextField fx:id="precoField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Estoque -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Estoque:" />
-        <TextField fx:id="estoqueField" />
+        <TextField fx:id="estoqueField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Quantidade de Compra -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Quantidade para Comprar:" />
-        <TextField fx:id="quantidadeCompraField" />
+        <TextField fx:id="quantidadeCompraField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Produto" onAction="#criarProduto" fx:id="criarButton" />
-    <Button text="Comprar Produto" onAction="#comprarProduto" fx:id="comprarButton" />
+    <HBox spacing="10">
+        <Button text="Criar Produto" onAction="#criarProduto" styleClass="button" />
+        <Button text="Comprar Produto" onAction="#comprarProduto" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

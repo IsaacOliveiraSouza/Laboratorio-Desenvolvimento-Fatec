@@ -2,31 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainController">
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainController">
     <!-- Título -->
-    <Label text="Escolha uma Classe" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Escolha uma Classe" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" />
 
-    <!-- Botão para Animal -->
-    <Button text="Animal" onAction="#abrirTelaAnimal" fx:id="animalButton" />
+    <!-- Grade de Botões -->
+    <GridPane hgap="10" vgap="10" alignment="CENTER">
+        <!-- Botão Animal -->
+        <Button text="🐕 Animal" onAction="#abrirTelaAnimal" style="-fx-background-color: #FF6F61; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
 
-    <!-- Botão para Carro -->
-    <Button text="Carro" onAction="#abrirTelaCarro" fx:id="carroButton" />
+        <!-- Botão Carro -->
+        <Button text="🚗 Carro" onAction="#abrirTelaCarro" style="-fx-background-color: #6B5B95; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
-    <!-- Botão para Pessoa -->
-    <Button text="Pessoa" onAction="#abrirTelaPessoa" fx:id="pessoaButton" />
+        <!-- Botão Pessoa -->
+        <Button text="👤 Pessoa" onAction="#abrirTelaPessoa" style="-fx-background-color: #88B04B; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="0" GridPane.columnIndex="2" />
 
-    <!-- Botão para Jogo -->
-    <Button text="Jogo" onAction="#abrirTelaJogo" fx:id="jogoButton" />
+        <!-- Botão Jogo -->
+        <Button text="🎮 Jogo" onAction="#abrirTelaJogo" style="-fx-background-color: #FFA500; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
 
-    <!-- Botão para Produto -->
-    <Button text="Produto" onAction="#abrirTelaProduto" fx:id="produtoButton" />
+        <!-- Botão Produto -->
+        <Button text="📦 Produto" onAction="#abrirTelaProduto" style="-fx-background-color: #0074D9; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
-    <!-- Botão para Livro -->
-    <Button text="Livro" onAction="#abrirTelaLivro" fx:id="livroButton" />
+        <!-- Botão Livro -->
+        <Button text="📚 Livro" onAction="#abrirTelaLivro" style="-fx-background-color: #FFD700; -fx-text-fill: black; -fx-font-size: 14px;" GridPane.rowIndex="1" GridPane.columnIndex="2" />
 
-    <!-- Botão para Computador -->
-    <Button text="Computador" onAction="#abrirTelaComputador" fx:id="computadorButton" />
+        <!-- Botão Computador -->
+        <Button text="💻 Computador" onAction="#abrirTelaComputador" style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
 
-    <!-- Botão para Funcionário -->
-    <Button text="Funcionário" onAction="#abrirTelaFuncionario" fx:id="funcionarioButton" />
+        <!-- Botão Funcionário -->
+        <Button text="💼 Funcionário" onAction="#abrirTelaFuncionario" style="-fx-background-color: #8B008B; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+    </GridPane>
 </VBox>

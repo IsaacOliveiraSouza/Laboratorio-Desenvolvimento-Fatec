@@ -2,32 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.JogoController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.JogoController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Jogo" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Jogo 🎮" styleClass="title-label" />
 
     <!-- Campo Nome -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Gênero -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Gênero:" />
-        <TextField fx:id="generoField" />
+        <TextField fx:id="generoField" styleClass="text-field" />
     </HBox>
 
     <!-- Checkbox Multiplayer -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Multiplayer:" />
         <CheckBox fx:id="multiplayerCheckBox" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Jogo" onAction="#criarJogo" fx:id="criarButton" />
-    <Button text="Iniciar Jogo" onAction="#iniciarJogo" />
+    <HBox spacing="10">
+        <Button text="Criar Jogo" onAction="#criarJogo" styleClass="button" />
+        <Button text="Iniciar Jogo" onAction="#iniciarJogo" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>

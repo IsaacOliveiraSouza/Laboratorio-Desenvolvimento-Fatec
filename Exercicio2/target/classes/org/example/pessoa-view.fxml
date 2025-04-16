@@ -2,32 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PessoaController">
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PessoaController" stylesheets="@styles.css">
     <!-- Título -->
-    <Label text="Criar Pessoa" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Criar Pessoa 👤" styleClass="title-label" />
 
     <!-- Campo Nome -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Idade -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Idade:" />
-        <TextField fx:id="idadeField" />
+        <TextField fx:id="idadeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Profissão -->
-    <HBox spacing="10">
+    <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Profissão:" />
-        <TextField fx:id="profissaoField" />
+        <TextField fx:id="profissaoField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
-    <Button text="Criar Pessoa" onAction="#criarPessoa" fx:id="criarButton" />
-    <Button text="Apresentar Pessoa" onAction="#apresentarPessoa" />
+    <HBox spacing="10">
+        <Button text="Criar Pessoa" onAction="#criarPessoa" styleClass="button" />
+        <Button text="Apresentar Pessoa" onAction="#apresentarPessoa" styleClass="button" />
+    </HBox>
 
     <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;" />
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
 </VBox>
