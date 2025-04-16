@@ -2,26 +2,54 @@ package org.example;
 
 public class Robo {
     private String nome;
-    private String tipo;
-    private int nivelBateria;
+    private String tipo; // Ex.: "Exploração", "Resgate", "Doméstico"
+    private int bateria; // Nível de bateria em porcentagem (0-100)
 
-    public Robo(String nome, String tipo, int nivelBateria) {
+    // Construtor
+    public Robo(String nome, String tipo, int bateria) {
         this.nome = nome;
         this.tipo = tipo;
-        this.nivelBateria = nivelBateria;
+        this.bateria = bateria;
     }
 
-    public void mover() {
-        if (nivelBateria > 0) {
-            nivelBateria -= 10;
-            System.out.println("O robô " + nome + " está se movendo. Bateria restante: " + nivelBateria + "%");
+    // Método para realizar uma tarefa
+    public void realizarTarefa() {
+        if (bateria > 20) {
+            System.out.println("O robô " + nome + " (" + tipo + ") está realizando uma tarefa.");
+            bateria -= 10; // Consome 10% de bateria
         } else {
-            System.out.println("Bateria do robô " + nome + " esgotada.");
+            System.out.println("Erro: Bateria insuficiente para realizar a tarefa.");
         }
     }
 
-    public void recarregar() {
-        nivelBateria = 100;
-        System.out.println("O robô " + nome + " foi recarregado. Bateria: 100%");
+    // Método para recarregar a bateria
+    public void recarregarBateria() {
+        bateria = 100;
+        System.out.println("O robô " + nome + " foi recarregado. Bateria: " + bateria + "%");
+    }
+
+    // Getters e Setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getBateria() {
+        return bateria;
+    }
+
+    public void setBateria(int bateria) {
+        this.bateria = bateria;
     }
 }

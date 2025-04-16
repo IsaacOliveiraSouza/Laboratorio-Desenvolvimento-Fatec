@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.RoboController" stylesheets="@styles.css">
+    <!-- Título -->
+    <Label text="Criar Robô 🤖" styleClass="title-label" />
+
+    <!-- Campo Nome -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" styleClass="text-field" />
+    </HBox>
+
+    <!-- Campo Tipo -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Tipo:" />
+        <TextField fx:id="tipoField" styleClass="text-field" />
+    </HBox>
+
+    <!-- Campo Bateria -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Bateria (%):" />
+        <TextField fx:id="bateriaField" styleClass="text-field" />
+    </HBox>
+
+    <!-- Botões -->
+    <HBox spacing="10">
+        <Button text="Criar Robô" onAction="#criarRobo" styleClass="button" />
+        <Button text="Realizar Tarefa" onAction="#realizarTarefa" styleClass="button" />
+        <Button text="Recarregar Bateria" onAction="#recarregarBateria" styleClass="button" />
+    </HBox>
+
+    <!-- Label de Resultado -->
+    <Label fx:id="resultadoLabel" styleClass="result-label" />
+</VBox>

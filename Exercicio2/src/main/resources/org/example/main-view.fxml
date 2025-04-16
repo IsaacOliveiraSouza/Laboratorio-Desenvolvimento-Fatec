@@ -31,5 +31,9 @@
 
         <!-- Botão Funcionário -->
         <Button text="💼 Funcionário" onAction="#abrirTelaFuncionario" style="-fx-background-color: #8B008B; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+        <!-- Botão Robô -->
+        <Button text="🤖 Robô" onAction="#abrirTelaRobo" style="-fx-background-color: #FF5733; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+
     </GridPane>
 </VBox>

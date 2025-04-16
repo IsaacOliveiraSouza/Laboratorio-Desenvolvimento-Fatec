@@ -81,6 +81,11 @@ public class MainController {
         abrirNovaTela("/org/example/funcionario-view.fxml", "Cadastro de Funcionários");
     }
 
+    @FXML
+    protected void abrirTelaRobo() throws IOException {
+        abrirNovaTela("/org/example/robo-view.fxml", "Cadastro de Robôs");
+    }
+
     // Método auxiliar para abrir uma nova tela
     private void abrirNovaTela(String fxmlPath, String titulo) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
