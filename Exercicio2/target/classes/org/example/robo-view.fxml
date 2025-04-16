@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.RoboController" stylesheets="@styles.css">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.RoboController">
     <!-- Título -->
-    <Label text="Criar Robô 🤖" styleClass="title-label" />
+    <Label styleClass="title-label" text="Criar Robô 🤖" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/robo.png" />
+      </image>
+   </ImageView>
 
     <!-- Campo Nome -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Nome:" />
         <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Tipo -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Tipo:" />
         <TextField fx:id="tipoField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Bateria -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Bateria (%):" />
         <TextField fx:id="bateriaField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
     <HBox spacing="10">
-        <Button text="Criar Robô" onAction="#criarRobo" styleClass="button" />
-        <Button text="Realizar Tarefa" onAction="#realizarTarefa" styleClass="button" />
-        <Button text="Recarregar Bateria" onAction="#recarregarBateria" styleClass="button" />
+        <Button onAction="#criarRobo" styleClass="button" text="Criar Robô" />
+        <Button onAction="#realizarTarefa" styleClass="button" text="Realizar Tarefa" />
+        <Button onAction="#recarregarBateria" styleClass="button" text="Recarregar Bateria" />
     </HBox>
 
     <!-- Label de Resultado -->

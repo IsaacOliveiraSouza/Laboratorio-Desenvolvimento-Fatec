@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PessoaController" stylesheets="@styles.css">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PessoaController">
     <!-- Título -->
-    <Label text="Criar Pessoa 👤" styleClass="title-label" />
+    <Label styleClass="title-label" text="Criar Pessoa 👤" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/pessoas.jpg" />
+      </image>
+   </ImageView>
 
     <!-- Campo Nome -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Nome:" />
         <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Idade -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Idade:" />
         <TextField fx:id="idadeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Profissão -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Profissão:" />
         <TextField fx:id="profissaoField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
     <HBox spacing="10">
-        <Button text="Criar Pessoa" onAction="#criarPessoa" styleClass="button" />
-        <Button text="Apresentar Pessoa" onAction="#apresentarPessoa" styleClass="button" />
+        <Button onAction="#criarPessoa" styleClass="button" text="Criar Pessoa" />
+        <Button onAction="#apresentarPessoa" styleClass="button" text="Apresentar Pessoa" />
     </HBox>
 
     <!-- Label de Resultado -->

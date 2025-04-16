@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LivroController" stylesheets="@styles.css">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LivroController">
     <!-- Título -->
-    <Label text="Criar Livro 📚" styleClass="title-label" />
+    <Label styleClass="title-label" text="Criar Livro 📚" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/livros.png" />
+      </image>
+   </ImageView>
 
     <!-- Campo Título -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Título:" />
         <TextField fx:id="tituloField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Autor -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Autor:" />
         <TextField fx:id="autorField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Número de Páginas -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Número de Páginas:" />
         <TextField fx:id="paginasField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
     <HBox spacing="10">
-        <Button text="Criar Livro" onAction="#criarLivro" styleClass="button" />
-        <Button text="Exibir Detalhes" onAction="#exibirDetalhesLivro" styleClass="button" />
+        <Button onAction="#criarLivro" styleClass="button" text="Criar Livro" />
+        <Button onAction="#exibirDetalhesLivro" styleClass="button" text="Exibir Detalhes" />
     </HBox>
 
     <!-- Label de Resultado -->

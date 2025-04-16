@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProdutoController" stylesheets="@styles.css">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProdutoController">
     <!-- Título -->
-    <Label text="Criar Produto 📦" styleClass="title-label" />
+    <Label styleClass="title-label" text="Criar Produto 📦" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/produtos.png" />
+      </image>
+   </ImageView>
 
     <!-- Campo Nome -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Nome:" />
         <TextField fx:id="nomeField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Preço -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Preço:" />
         <TextField fx:id="precoField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Estoque -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Estoque:" />
         <TextField fx:id="estoqueField" styleClass="text-field" />
     </HBox>
 
     <!-- Campo Quantidade de Compra -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Quantidade para Comprar:" />
         <TextField fx:id="quantidadeCompraField" styleClass="text-field" />
     </HBox>
 
     <!-- Botões -->
     <HBox spacing="10">
-        <Button text="Criar Produto" onAction="#criarProduto" styleClass="button" />
-        <Button text="Comprar Produto" onAction="#comprarProduto" styleClass="button" />
+        <Button onAction="#criarProduto" styleClass="button" text="Criar Produto" />
+        <Button onAction="#comprarProduto" styleClass="button" text="Comprar Produto" />
     </HBox>
 
     <!-- Label de Resultado -->
