@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainController">
+    <!-- Título -->
+    <Label text="Escolha uma Classe" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Botão para Animal -->
+    <Button text="Animal" onAction="#abrirTelaAnimal" fx:id="animalButton" />
+
+    <!-- Botão para Carro -->
+    <Button text="Carro" onAction="#abrirTelaCarro" fx:id="carroButton" />
+
+    <!-- Botão para Pessoa -->
+    <Button text="Pessoa" onAction="#abrirTelaPessoa" fx:id="pessoaButton" />
+
+    <!-- Botão para Jogo -->
+    <Button text="Jogo" onAction="#abrirTelaJogo" fx:id="jogoButton" />
+
+    <!-- Botão para Produto -->
+    <Button text="Produto" onAction="#abrirTelaProduto" fx:id="produtoButton" />
+
+    <!-- Botão para Livro -->
+    <Button text="Livro" onAction="#abrirTelaLivro" fx:id="livroButton" />
+
+    <!-- Botão para Computador -->
+    <Button text="Computador" onAction="#abrirTelaComputador" fx:id="computadorButton" />
+
+    <!-- Botão para Funcionário -->
+    <Button text="Funcionário" onAction="#abrirTelaFuncionario" fx:id="funcionarioButton" />
+</VBox>

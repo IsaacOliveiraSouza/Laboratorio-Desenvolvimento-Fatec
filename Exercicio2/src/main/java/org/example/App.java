@@ -10,12 +10,12 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        // Carregar o arquivo FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/funcionario-view.fxml"));
-        Scene scene = new Scene(loader.load(), 400, 300);
+        // Carregar o arquivo FXML da tela principal
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/main-view.fxml"));
+        Scene scene = new Scene(loader.load(), 300, 400);
 
         // Configurar a cena
-        primaryStage.setTitle("Cadastro de carros");
+        primaryStage.setTitle("Menu Principal");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
