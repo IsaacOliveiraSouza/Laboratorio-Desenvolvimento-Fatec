@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.example.Animal;
+import org.example.Database.AnimalDAO;
 
 public class AnimalController {
     @FXML
@@ -33,6 +34,7 @@ public class AnimalController {
 
             // Criar um novo animal
             animal = new Animal(nome, idade, especie);
+            AnimalDAO animalDAO =  new AnimalDAO();
 
             // Exibir mensagem de sucesso
             resultadoLabel.setText("Animal criado: " + animal.getNome() + " (" + animal.getEspecie() + ")");
