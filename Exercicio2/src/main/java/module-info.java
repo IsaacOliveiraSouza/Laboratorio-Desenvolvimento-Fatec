@@ -1,6 +1,7 @@
 module org.example {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
     // Exporta o pacote principal
     exports org.example;

@@ -3,6 +3,7 @@ public class Animal {
     private String nome;
     private int idade;
     private String especie;
+    private int id;
 
     public Animal(String nome, int idade, String especie) {
         this.nome = nome;
@@ -29,6 +30,14 @@ public class Animal {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEspecie() {
