@@ -1,45 +1,25 @@
 package org.example;
 
 public class Carro {
+    private int id;
     private String marca;
     private String modelo;
-    private int anoFabricacao;
+    private String anoFabricacao;
 
-    public Carro(String marca, String modelo, int anoFabricacao) {
+    public Carro(int id, String marca, String modelo, String anoFabricacao) {
+        this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.anoFabricacao = anoFabricacao;
     }
 
-    public void ligar() {
-        System.out.println("O carro " + marca + " " + modelo + " está ligado.");
-    }
+    public int getId() { return id; }
+    public String getMarca() { return marca; }
+    public String getModelo() { return modelo; }
+    public String getAnoFabricacao() { return anoFabricacao; }
 
-    public void desligar() {
-        System.out.println("O carro " + marca + " " + modelo + " está desligado.");
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getAnoFabricacao() {
-        return anoFabricacao;
-    }
-
-    public void setAnoFabricacao(int anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
-    }
+    public void setId(int id) { this.id = id; }
+    public void setMarca(String marca) { this.marca = marca; }
+    public void setModelo(String modelo) { this.modelo = modelo; }
+    public void setAnoFabricacao(String anoFabricacao) { this.anoFabricacao = anoFabricacao; }
 }

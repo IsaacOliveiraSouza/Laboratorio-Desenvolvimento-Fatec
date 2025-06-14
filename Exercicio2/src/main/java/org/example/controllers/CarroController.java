@@ -1,64 +1,116 @@
 package org.example.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Carro;
+import org.example.Database.CarroDAO;
 
 public class CarroController {
-    @FXML
-    private TextField marcaField;
+
+    @FXML private TextField marcaField;
+    @FXML private TextField modeloField;
+    @FXML private TextField anoField;
+    @FXML private Label resultadoLabel;
+
+    @FXML private TableView<Carro> tabelaCarros;
+    @FXML private TableColumn<Carro, Integer> colunaId;
+    @FXML private TableColumn<Carro, String> colunaMarca;
+    @FXML private TableColumn<Carro, String> colunaModelo;
+    @FXML private TableColumn<Carro, String> colunaAno;
+
+    private ObservableList<Carro> listaCarros = FXCollections.observableArrayList();
+    private Carro carroSelecionado;
+    private CarroDAO carroDAO = new CarroDAO();
 
     @FXML
-    private TextField modeloField;
+    public void initialize() {
+        colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colunaMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        colunaModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        colunaAno.setCellValueFactory(new PropertyValueFactory<>("anoFabricacao"));
 
-    @FXML
-    private TextField anoField;
+        tabelaCarros.setItems(listaCarros);
+        tabelaCarros.setOnMouseClicked(this::selecionarCarro);
 
-    @FXML
-    private Button criarButton;
+        carregarDados();
+    }
 
-    @FXML
-    private Label resultadoLabel;
+    private void carregarDados() {
+        listaCarros.setAll(carroDAO.listarTodos());
+    }
 
-    private Carro carro;
+    public void criarCarro() {
+        if (camposInvalidos()) return;
 
-    @FXML
-    protected void criarCarro() {
-        try {
-            // Obter os valores dos campos
-            String marca = marcaField.getText();
-            String modelo = modeloField.getText();
-            int anoFabricacao = Integer.parseInt(anoField.getText());
-
-            // Criar um novo carro
-            carro = new Carro(marca, modelo, anoFabricacao);
-
-            // Exibir mensagem de sucesso
-            resultadoLabel.setText("Carro criado: " + carro.getMarca() + " " + carro.getModelo() + " (" + carro.getAnoFabricacao() + ")");
-        } catch (NumberFormatException e) {
-            resultadoLabel.setText("Erro: Insira um ano válido.");
+        Carro carro = new Carro(0, marcaField.getText(), modeloField.getText(), anoField.getText());
+        if (carroDAO.inserir(carro)) {
+            resultadoLabel.setText("Carro criado com sucesso.");
+            limparCampos();
+            carregarDados();
+        } else {
+            resultadoLabel.setText("Erro ao criar carro.");
         }
     }
 
-    @FXML
-    protected void ligarCarro() {
-        if (carro != null) {
-            carro.ligar();
-            resultadoLabel.setText("O carro foi ligado no console.");
+    public void atualizarCarro() {
+        if (carroSelecionado == null) {
+            resultadoLabel.setText("Selecione um carro.");
+            return;
+        }
+
+        carroSelecionado.setMarca(marcaField.getText());
+        carroSelecionado.setModelo(modeloField.getText());
+        carroSelecionado.setAnoFabricacao(anoField.getText());
+
+        if (carroDAO.atualizar(carroSelecionado)) {
+            resultadoLabel.setText("Carro atualizado.");
+            limparCampos();
+            carregarDados();
         } else {
-            resultadoLabel.setText("Erro: Crie um carro primeiro.");
+            resultadoLabel.setText("Erro ao atualizar carro.");
         }
     }
 
-    @FXML
-    protected void desligarCarro() {
-        if (carro != null) {
-            carro.desligar();
-            resultadoLabel.setText("O carro foi desligado no console.");
-        } else {
-            resultadoLabel.setText("Erro: Crie um carro primeiro.");
+    public void excluirCarro() {
+        if (carroSelecionado == null) {
+            resultadoLabel.setText("Selecione um carro.");
+            return;
         }
+
+        if (carroDAO.excluir(carroSelecionado.getId())) {
+            resultadoLabel.setText("Carro excluído.");
+            limparCampos();
+            carregarDados();
+        } else {
+            resultadoLabel.setText("Erro ao excluir carro.");
+        }
+    }
+
+    private void selecionarCarro(MouseEvent event) {
+        carroSelecionado = tabelaCarros.getSelectionModel().getSelectedItem();
+        if (carroSelecionado != null) {
+            marcaField.setText(carroSelecionado.getMarca());
+            modeloField.setText(carroSelecionado.getModelo());
+            anoField.setText(carroSelecionado.getAnoFabricacao());
+        }
+    }
+
+    private boolean camposInvalidos() {
+        if (marcaField.getText().isEmpty() || modeloField.getText().isEmpty() || anoField.getText().isEmpty()) {
+            resultadoLabel.setText("Preencha todos os campos.");
+            return true;
+        }
+        return false;
+    }
+
+    private void limparCampos() {
+        marcaField.clear();
+        modeloField.clear();
+        anoField.clear();
+        carroSelecionado = null;
     }
 }
