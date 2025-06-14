@@ -8,6 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ComputadorController">
     <!-- Título -->
     <Label styleClass="title-label" text="Criar Computador 💻" />
@@ -44,4 +46,19 @@
 
     <!-- Label de Resultado -->
     <Label fx:id="resultadoLabel" styleClass="result-label" />
+
+    <!-- Adicione após o Label resultadoLabel -->
+    <TableView fx:id="tabelaComputadores" onMouseClicked="#exibirDetalhesComputador">
+        <columns>
+            <TableColumn fx:id="colunaMarca" text="Marca" prefWidth="150" />
+            <TableColumn fx:id="colunaModelo" text="Modelo" prefWidth="150" />
+            <TableColumn fx:id="colunaRam" text="RAM (GB)" prefWidth="100" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Atualizar" onAction="#atualizarComputador" styleClass="button"/>
+        <Button text="Deletar" onAction="#deletarComputador" styleClass="button"/>
+    </HBox>
+
 </VBox>

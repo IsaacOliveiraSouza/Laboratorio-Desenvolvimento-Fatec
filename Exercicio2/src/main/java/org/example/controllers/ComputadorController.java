@@ -1,44 +1,98 @@
 package org.example.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import org.example.Computador;
+import org.example.Database.ComputadorDAO;
 
 public class ComputadorController {
+
     @FXML
     private TextField marcaField;
-
     @FXML
     private TextField modeloField;
-
     @FXML
     private TextField ramField;
-
-    @FXML
-    private Button criarButton;
-
     @FXML
     private Label resultadoLabel;
+
+    @FXML
+    private TableView<Computador> tabelaComputadores;
+    @FXML
+    private TableColumn<Computador, String> colunaMarca;
+    @FXML
+    private TableColumn<Computador, String> colunaModelo;
+    @FXML
+    private TableColumn<Computador, Integer> colunaRam;
 
     private Computador computador;
 
     @FXML
+    public void initialize() {
+        colunaMarca.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getMarca()));
+        colunaModelo.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getModelo()));
+        colunaRam.setCellValueFactory(cellData -> new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getRam()).asObject());
+
+        atualizarTabela();
+    }
+
+    private void atualizarTabela() {
+        ComputadorDAO dao = new ComputadorDAO();
+        ObservableList<Computador> lista = FXCollections.observableArrayList(dao.listar());
+        tabelaComputadores.setItems(lista);
+    }
+
+    @FXML
     protected void criarComputador() {
         try {
-            // Obter os valores dos campos
             String marca = marcaField.getText();
             String modelo = modeloField.getText();
-            int memoriaRAM = Integer.parseInt(ramField.getText());
+            int ram = Integer.parseInt(ramField.getText());
 
-            // Criar um novo computador
-            computador = new Computador(marca, modelo, memoriaRAM);
+            computador = new Computador(marca, modelo, ram);
+            new ComputadorDAO().criarComputador(computador);
 
-            // Exibir mensagem de sucesso
-            resultadoLabel.setText("Computador criado: " + computador.getMarca() + " " + computador.getModelo() + ", Memória RAM: " + computador.getMemoriaRAM() + " GB");
+            resultadoLabel.setText("Computador criado com sucesso!");
+            atualizarTabela();
         } catch (NumberFormatException e) {
-            resultadoLabel.setText("Erro: Insira uma memória RAM válida.");
+            resultadoLabel.setText("Erro: RAM deve ser um número inteiro.");
+        }
+    }
+
+    @FXML
+    public void exibirDetalhesComputador(MouseEvent event) {
+        Computador comp = tabelaComputadores.getSelectionModel().getSelectedItem();
+        if (comp != null) {
+            marcaField.setText(comp.getMarca());
+            modeloField.setText(comp.getModelo());
+            ramField.setText(String.valueOf(comp.getRam()));
+        }
+    }
+
+    @FXML
+    public void atualizarComputador() {
+        Computador comp = tabelaComputadores.getSelectionModel().getSelectedItem();
+        if (comp != null) {
+            comp.setMarca(marcaField.getText());
+            comp.setModelo(modeloField.getText());
+            comp.setRam(Integer.parseInt(ramField.getText()));
+
+            new ComputadorDAO().atualizar(comp);
+            resultadoLabel.setText("Computador atualizado!");
+            atualizarTabela();
+        }
+    }
+
+    @FXML
+    public void deletarComputador() {
+        Computador comp = tabelaComputadores.getSelectionModel().getSelectedItem();
+        if (comp != null) {
+            new ComputadorDAO().deletar(comp.getId());
+            resultadoLabel.setText("Computador deletado!");
+            atualizarTabela();
         }
     }
 
@@ -46,9 +100,9 @@ public class ComputadorController {
     protected void ligarComputador() {
         if (computador != null) {
             computador.ligar();
-            resultadoLabel.setText("O computador foi ligado no console.");
+            resultadoLabel.setText("Computador ligado (veja o console).");
         } else {
-            resultadoLabel.setText("Erro: Crie um computador primeiro.");
+            resultadoLabel.setText("Crie um computador primeiro.");
         }
     }
 
@@ -56,9 +110,9 @@ public class ComputadorController {
     protected void desligarComputador() {
         if (computador != null) {
             computador.desligar();
-            resultadoLabel.setText("O computador foi desligado no console.");
+            resultadoLabel.setText("Computador desligado (veja o console).");
         } else {
-            resultadoLabel.setText("Erro: Crie um computador primeiro.");
+            resultadoLabel.setText("Crie um computador primeiro.");
         }
     }
 }

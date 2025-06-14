@@ -1,28 +1,33 @@
 package org.example;
 
 public class Computador {
+    private int id;
     private String marca;
     private String modelo;
-    private int memoriaRAM;
+    private int ram;
 
-    // Construtor
-    public Computador(String marca, String modelo, int memoriaRAM) {
+    public Computador(String marca, String modelo, int ram) {
         this.marca = marca;
         this.modelo = modelo;
-        this.memoriaRAM = memoriaRAM;
+        this.ram = ram;
     }
 
-    // Método para ligar o computador
     public void ligar() {
-        System.out.println("O computador " + marca + " " + modelo + " está ligado.");
+        System.out.println("Computador ligado: " + modelo);
     }
 
-    // Método para desligar o computador
     public void desligar() {
-        System.out.println("O computador " + marca + " " + modelo + " está desligado.");
+        System.out.println("Computador desligado: " + modelo);
     }
 
-    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getMarca() {
         return marca;
     }
@@ -39,11 +44,11 @@ public class Computador {
         this.modelo = modelo;
     }
 
-    public int getMemoriaRAM() {
-        return memoriaRAM;
+    public int getRam() {
+        return ram;
     }
 
-    public void setMemoriaRAM(int memoriaRAM) {
-        this.memoriaRAM = memoriaRAM;
+    public void setRam(int ram) {
+        this.ram = ram;
     }
 }
