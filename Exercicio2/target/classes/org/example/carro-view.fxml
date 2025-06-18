@@ -20,7 +20,7 @@
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="10">
-        <Label text="Ano (yyyyMMdd):" />
+        <Label text="Ano:" />
         <TextField fx:id="anoField" styleClass="text-field"/>
     </HBox>
 

@@ -1,62 +1,90 @@
 package org.example.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.example.Database.FuncionarioDAO;
 import org.example.Funcionario;
 
 public class FuncionarioController {
+
     @FXML
     private TextField nomeField;
-
     @FXML
     private TextField cargoField;
+    @FXML
+    private TableView<Funcionario> tabelaFuncionarios;
+    @FXML
+    private TableColumn<Funcionario, Integer> idColumn;
+    @FXML
+    private TableColumn<Funcionario, String> nomeColumn;
+    @FXML
+    private TableColumn<Funcionario, String> cargoColumn;
+
+    private final FuncionarioDAO dao = new FuncionarioDAO();
+    private Funcionario funcionarioSelecionado;
 
     @FXML
-    private TextField salarioField;
+    public void initialize() {
+        nomeColumn.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getNome()));
+        cargoColumn.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getCargo()));
+        carregarTabela();
+    }
+
+    public void carregarTabela() {
+        ObservableList<Funcionario> lista = FXCollections.observableArrayList(dao.listar());
+        tabelaFuncionarios.setItems(lista);
+    }
 
     @FXML
-    private TextField aumentoField;
+    public void criarFuncionario() {
+        String nome = nomeField.getText();
+        String cargo = cargoField.getText();
+
+        if (nome.isEmpty() || cargo.isEmpty()) return;
+
+        Funcionario novo = new Funcionario( nome, cargo);
+        dao.salvar(novo);
+        carregarTabela();
+        limparCampos();
+    }
 
     @FXML
-    private Button criarButton;
-
-    @FXML
-    private Label resultadoLabel;
-
-    private Funcionario funcionario;
-
-    @FXML
-    protected void criarFuncionario() {
-        try {
-            // Obter os valores dos campos
-            String nome = nomeField.getText();
-            String cargo = cargoField.getText();
-            double salario = Double.parseDouble(salarioField.getText());
-
-            // Criar um novo funcionário
-            funcionario = new Funcionario(nome, cargo, salario);
-
-            // Exibir mensagem de sucesso
-            resultadoLabel.setText("Funcionário criado: " + funcionario.getNome() + ", Cargo: " + funcionario.getCargo() + ", Salário: R$" + funcionario.getSalario());
-        } catch (NumberFormatException e) {
-            resultadoLabel.setText("Erro: Insira um salário válido.");
+    public void atualizarFuncionario() {
+        if (funcionarioSelecionado != null) {
+            funcionarioSelecionado.setNome(nomeField.getText());
+            funcionarioSelecionado.setCargo(cargoField.getText());
+            dao.atualizar(funcionarioSelecionado);
+            carregarTabela();
+            limparCampos();
         }
     }
 
     @FXML
-    protected void darAumento() {
-        if (funcionario != null) {
-            try {
-                double percentual = Double.parseDouble(aumentoField.getText());
-                funcionario.receberAumento(percentual);
-                resultadoLabel.setText("Aumento aplicado no console. Novo salário: R$" + funcionario.getSalario());
-            } catch (NumberFormatException e) {
-                resultadoLabel.setText("Erro: Insira um percentual de aumento válido.");
-            }
-        } else {
-            resultadoLabel.setText("Erro: Crie um funcionário primeiro.");
+    public void excluirFuncionario() {
+        if (funcionarioSelecionado != null) {
+            dao.excluir(funcionarioSelecionado.getId());
+            carregarTabela();
+            limparCampos();
         }
+    }
+
+    @FXML
+    public void selecionarFuncionario(MouseEvent event) {
+        funcionarioSelecionado = tabelaFuncionarios.getSelectionModel().getSelectedItem();
+        if (funcionarioSelecionado != null) {
+            nomeField.setText(funcionarioSelecionado.getNome());
+            cargoField.setText(funcionarioSelecionado.getCargo());
+        }
+    }
+
+    @FXML
+    public void limparCampos() {
+        nomeField.clear();
+        cargoField.clear();
+        funcionarioSelecionado = null;
+        tabelaFuncionarios.getSelectionModel().clearSelection();
     }
 }

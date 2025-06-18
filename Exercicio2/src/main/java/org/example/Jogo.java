@@ -1,23 +1,27 @@
 package org.example;
 
 public class Jogo {
+    private int id;
     private String nome;
     private String genero;
-    private boolean multiplayer;
 
-    // Construtor
-    public Jogo(String nome, String genero, boolean multiplayer) {
+    public Jogo(String nome, String genero) {
         this.nome = nome;
         this.genero = genero;
-        this.multiplayer = multiplayer;
     }
 
-    // Método para iniciar o jogo
     public void iniciar() {
         System.out.println("Iniciando o jogo " + nome + ".");
     }
 
-    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -32,13 +36,5 @@ public class Jogo {
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public boolean isMultiplayer() {
-        return multiplayer;
-    }
-
-    public void setMultiplayer(boolean multiplayer) {
-        this.multiplayer = multiplayer;
     }
 }

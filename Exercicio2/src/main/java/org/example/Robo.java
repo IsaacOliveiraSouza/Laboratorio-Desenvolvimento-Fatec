@@ -1,34 +1,32 @@
 package org.example;
 
 public class Robo {
+    private int id;
     private String nome;
-    private String tipo; // Ex.: "Exploração", "Resgate", "Doméstico"
-    private int bateria; // Nível de bateria em porcentagem (0-100)
+    private String tipo;
+    private int bateria;
 
-    // Construtor
     public Robo(String nome, String tipo, int bateria) {
         this.nome = nome;
         this.tipo = tipo;
         this.bateria = bateria;
     }
 
-    // Método para realizar uma tarefa
-    public void realizarTarefa() {
-        if (bateria > 20) {
-            System.out.println("O robô " + nome + " (" + tipo + ") está realizando uma tarefa.");
-            bateria -= 10; // Consome 10% de bateria
-        } else {
-            System.out.println("Erro: Bateria insuficiente para realizar a tarefa.");
-        }
+    public Robo(int id, String nome, String tipo, int bateria) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.bateria = bateria;
     }
 
-    // Método para recarregar a bateria
-    public void recarregarBateria() {
-        bateria = 100;
-        System.out.println("O robô " + nome + " foi recarregado. Bateria: " + bateria + "%");
+    public int getId() {
+        return id;
     }
 
-    // Getters e Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -51,5 +49,13 @@ public class Robo {
 
     public void setBateria(int bateria) {
         this.bateria = bateria;
+    }
+
+    public void realizarTarefa() {
+        if (bateria > 20) bateria -= 10;
+    }
+
+    public void recarregarBateria() {
+        bateria = 100;
     }
 }

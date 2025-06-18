@@ -8,14 +8,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.FuncionarioController">
     <!-- Título -->
     <Label styleClass="title-label" text="Criar Funcionário 💼" />
-   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@images/funcionarios.jpg" />
-      </image>
-   </ImageView>
+    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/funcionarios.jpg" />
+        </image>
+    </ImageView>
 
     <!-- Campo Nome -->
     <HBox alignment="CENTER_LEFT" spacing="10">
@@ -29,24 +31,20 @@
         <TextField fx:id="cargoField" styleClass="text-field" />
     </HBox>
 
-    <!-- Campo Salário -->
-    <HBox alignment="CENTER_LEFT" spacing="10">
-        <Label text="Salário:" />
-        <TextField fx:id="salarioField" styleClass="text-field" />
-    </HBox>
-
-    <!-- Campo Percentual de Aumento -->
-    <HBox alignment="CENTER_LEFT" spacing="10">
-        <Label text="Percentual de Aumento (%):" />
-        <TextField fx:id="aumentoField" styleClass="text-field" />
-    </HBox>
-
     <!-- Botões -->
     <HBox spacing="10">
-        <Button onAction="#criarFuncionario" styleClass="button" text="Criar Funcionário" />
-        <Button onAction="#darAumento" styleClass="button" text="Dar Aumento" />
+        <Button onAction="#criarFuncionario" styleClass="button" text="Criar Funcionario" />
+        <Button text="Atualizar" onAction="#atualizarFuncionario" styleClass="button" />
+        <Button text="Deletar" onAction="#excluirFuncionario" styleClass="button" />
     </HBox>
 
     <!-- Label de Resultado -->
     <Label fx:id="resultadoLabel" styleClass="result-label" />
+
+    <TableView fx:id="tabelaFuncionarios" onMouseClicked="#selecionarFuncionario" >
+        <columns>
+            <TableColumn fx:id="colunaNome" text="Nome" prefWidth="150" />
+            <TableColumn fx:id="colunaCargo" text="Especie" prefWidth="150" />
+        </columns>
+    </TableView>
 </VBox>

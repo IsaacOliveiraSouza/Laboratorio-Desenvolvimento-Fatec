@@ -1,70 +1,133 @@
 package org.example.controllers;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import org.example.Database.RoboDAO;
 import org.example.Robo;
 
 public class RoboController {
-    @FXML
-    private TextField nomeField;
+
+    @FXML private TextField nomeField;
+    @FXML private TextField tipoField;
+    @FXML private TextField bateriaField;
+    @FXML private Label resultadoLabel;
+    @FXML private TableView<Robo> tabelaRobos;
+
+    @FXML private TableColumn<Robo, String> nomeColumn;
+    @FXML private TableColumn<Robo, String> tipoColumn;
+    @FXML private TableColumn<Robo, Integer> bateriaColumn;
+
+    private Robo roboSelecionado;
+
+    private final RoboDAO roboDAO = new RoboDAO();
 
     @FXML
-    private TextField tipoField;
+    public void initialize() {
+        configurarColunas();
+        atualizarTabela();
+    }
 
-    @FXML
-    private TextField bateriaField;
+    private void configurarColunas() {
+        nomeColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getNome()));
+        tipoColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTipo()));
+        bateriaColumn.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getBateria()).asObject());
+    }
 
-    @FXML
-    private Button criarButton;
-
-    @FXML
-    private Label resultadoLabel;
-
-    private Robo robo;
+    private void atualizarTabela() {
+        ObservableList<Robo> lista = FXCollections.observableArrayList(roboDAO.listarRobos());
+        tabelaRobos.setItems(lista);
+    }
 
     @FXML
     protected void criarRobo() {
         try {
-            // Obter os valores dos campos
             String nome = nomeField.getText();
             String tipo = tipoField.getText();
             int bateria = Integer.parseInt(bateriaField.getText());
 
-            // Validar a bateria
-            if (bateria < 0 || bateria > 100) {
-                resultadoLabel.setText("Erro: A bateria deve estar entre 0 e 100.");
-                return;
-            }
-
-            // Criar um novo robô
-            robo = new Robo(nome, tipo, bateria);
-
-            // Exibir mensagem de sucesso
-            resultadoLabel.setText("Robô criado: " + robo.getNome() + ", Tipo: " + robo.getTipo() + ", Bateria: " + robo.getBateria() + "%");
+            Robo novoRobo = new Robo(nome, tipo, bateria);
+            roboDAO.inserirRobo(novoRobo);
+            resultadoLabel.setText("Robô criado com sucesso!");
+            limparCampos();
+            atualizarTabela();
         } catch (NumberFormatException e) {
-            resultadoLabel.setText("Erro: Insira uma bateria válida.");
+            resultadoLabel.setText("Erro: Informe um valor válido para a bateria.");
+        }
+    }
+
+    @FXML
+    protected void atualizarRobo() {
+        if (roboSelecionado != null) {
+            try {
+                roboSelecionado.setNome(nomeField.getText());
+                roboSelecionado.setTipo(tipoField.getText());
+                roboSelecionado.setBateria(Integer.parseInt(bateriaField.getText()));
+                roboDAO.atualizarRobo(roboSelecionado);
+                resultadoLabel.setText("Robô atualizado com sucesso!");
+                limparCampos();
+                atualizarTabela();
+            } catch (NumberFormatException e) {
+                resultadoLabel.setText("Erro: Informe um valor válido para a bateria.");
+            }
+        } else {
+            resultadoLabel.setText("Selecione um robô para atualizar.");
+        }
+    }
+
+    @FXML
+    protected void deletarRobo() {
+        if (roboSelecionado != null) {
+            roboDAO.deletarRobo(roboSelecionado.getId());
+            resultadoLabel.setText("Robô excluído com sucesso!");
+            limparCampos();
+            atualizarTabela();
+        } else {
+            resultadoLabel.setText("Selecione um robô para excluir.");
         }
     }
 
     @FXML
     protected void realizarTarefa() {
-        if (robo != null) {
-            robo.realizarTarefa();
-            resultadoLabel.setText("Tarefa realizada no console. Bateria restante: " + robo.getBateria() + "%");
+        if (roboSelecionado != null) {
+            roboSelecionado.realizarTarefa();
+            roboDAO.atualizarRobo(roboSelecionado);
+            resultadoLabel.setText("Tarefa realizada. Nova bateria: " + roboSelecionado.getBateria());
+            atualizarTabela();
         } else {
-            resultadoLabel.setText("Erro: Crie um robô primeiro.");
+            resultadoLabel.setText("Selecione um robô primeiro.");
         }
     }
 
     @FXML
     protected void recarregarBateria() {
-        if (robo != null) {
-            robo.recarregarBateria();
-            resultadoLabel.setText("Bateria recarregada no console. Bateria: " + robo.getBateria() + "%");
+        if (roboSelecionado != null) {
+            roboSelecionado.recarregarBateria();
+            roboDAO.atualizarRobo(roboSelecionado);
+            resultadoLabel.setText("Bateria recarregada.");
+            atualizarTabela();
         } else {
-            resultadoLabel.setText("Erro: Crie um robô primeiro.");
+            resultadoLabel.setText("Selecione um robô primeiro.");
         }
+    }
+
+    @FXML
+    public void selecionarRoboNaTabela(MouseEvent event) {
+        roboSelecionado = tabelaRobos.getSelectionModel().getSelectedItem();
+        if (roboSelecionado != null) {
+            nomeField.setText(roboSelecionado.getNome());
+            tipoField.setText(roboSelecionado.getTipo());
+            bateriaField.setText(String.valueOf(roboSelecionado.getBateria()));
+        }
+    }
+
+    private void limparCampos() {
+        nomeField.clear();
+        tipoField.clear();
+        bateriaField.clear();
     }
 }

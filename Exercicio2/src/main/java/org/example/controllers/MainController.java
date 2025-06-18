@@ -54,7 +54,7 @@ public class MainController {
     // Método para abrir a tela de Jogo
     @FXML
     protected void abrirTelaJogo() throws IOException {
-        abrirNovaTela("/org/example/jogo-view.fxml", "Cadastro de Jogos");
+        abrirNovaTela("/org/example/jogo-view_.fxml", "Cadastro de Jogos");
     }
 
     // Método para abrir a tela de Produto

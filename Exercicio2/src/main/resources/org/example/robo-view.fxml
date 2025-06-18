@@ -7,41 +7,50 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 
-<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.RoboController">
-    <!-- Título -->
-    <Label styleClass="title-label" text="Criar Robô 🤖" />
-   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@images/robo.png" />
-      </image>
-   </ImageView>
+<VBox alignment="CENTER" spacing="15" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controllers.RoboController">
 
-    <!-- Campo Nome -->
+    <Label styleClass="title-label" text="Cadastro de Robôs 🤖" />
+
+    <ImageView fitHeight="150" fitWidth="200" preserveRatio="true">
+        <image><Image url="@images/robo.png"/></image>
+    </ImageView>
+
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Nome:" />
-        <TextField fx:id="nomeField" styleClass="text-field" />
+        <TextField fx:id="nomeField"/>
     </HBox>
 
-    <!-- Campo Tipo -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Tipo:" />
-        <TextField fx:id="tipoField" styleClass="text-field" />
+        <TextField fx:id="tipoField"/>
     </HBox>
 
-    <!-- Campo Bateria -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="Bateria (%):" />
-        <TextField fx:id="bateriaField" styleClass="text-field" />
+        <TextField fx:id="bateriaField"/>
     </HBox>
 
-    <!-- Botões -->
     <HBox spacing="10">
-        <Button onAction="#criarRobo" styleClass="button" text="Criar Robô" />
-        <Button onAction="#realizarTarefa" styleClass="button" text="Realizar Tarefa" />
-        <Button onAction="#recarregarBateria" styleClass="button" text="Recarregar Bateria" />
+        <Button text="Salvar" onAction="#criarRobo"/>
+        <Button text="Atualizar" onAction="#atualizarRobo"/>
+        <Button text="Excluir" onAction="#deletarRobo"/>
+        <Button text="Tarefa" onAction="#realizarTarefa"/>
+        <Button text="Recarregar" onAction="#recarregarBateria"/>
     </HBox>
 
-    <!-- Label de Resultado -->
-    <Label fx:id="resultadoLabel" styleClass="result-label" />
+    <Label fx:id="resultadoLabel" styleClass="result-label"/>
+
+    <TableView fx:id="tabelaRobos" onMouseClicked="#selecionarRoboNaTabela">
+        <columns>
+            <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="100"/>
+            <TableColumn fx:id="tipoColumn" text="Tipo" prefWidth="100"/>
+            <TableColumn fx:id="bateriaColumn" text="Bateria (%)" prefWidth="100"/>
+        </columns>
+    </TableView>
+
 </VBox>
